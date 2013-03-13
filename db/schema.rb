@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313094210) do
+ActiveRecord::Schema.define(:version => 20130313111824) do
 
   create_table "zombies", :force => true do |t|
     t.string   "name"
     t.text     "bio"
-    t.integer  "age"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "email"
