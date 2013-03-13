@@ -3,7 +3,7 @@ class ZombiesController < ApplicationController
   # GET /zombies.json
   def index
     @zombies = Zombie.rotting
-    asdf
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @zombies }
