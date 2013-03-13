@@ -2,7 +2,7 @@ class ZombiesController < ApplicationController
   # GET /zombies
   # GET /zombies.json
   def index
-    @zombies = Zombie.rotting
+    @zombies = Zombie.includes(:brain).rotting
     
     respond_to do |format|
       format.html # index.html.erb
