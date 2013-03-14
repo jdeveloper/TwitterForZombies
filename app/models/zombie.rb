@@ -1,6 +1,8 @@
 class Zombie < ActiveRecord::Base
   attr_accessible :age, :bio, :name
+  
   has_one :brain, dependent: :destroy
+  has_many :tweets
   has_many :role_assignments
   has_many :roles, through: :role_assignments
   
