@@ -1,5 +1,5 @@
 class Zombie < ActiveRecord::Base
-  attr_accessible :age, :bio, :name
+  attr_accessible :age, :bio, :name, :email, :decomposition
   
   has_one :brain, dependent: :destroy
   has_many :tweets
@@ -7,6 +7,7 @@ class Zombie < ActiveRecord::Base
   has_many :roles, through: :role_assignments
   
   before_save :make_rotting
+  after_save :decomp_change_modification, if: :decomposition_changed?
   
   scope :rotting, where(rotting: true)
   scope :fresh, where("age < 20")
@@ -19,5 +20,10 @@ class Zombie < ActiveRecord::Base
   
   def isOlderThen20?
     age > 20
+  end
+  
+  private
+  def decomp_change_modification
+    ZombieMailer.decomp_change(self).deliver
   end
 end

@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>Name</th>
+	<th>Email</th>
+	<th>Decomposition</th>
 	<th>Flavor</th>
     <th>Bio</th>
     <th>Age</th>
@@ -14,6 +16,8 @@
 <% @zombies.each do |zombie| %>
   <tr>
     <td><%= zombie.name %></td>
+	<td><%= zombie.email %></td>
+	<td><%= zombie.decomposition %></td>
 	<td><%= zombie.brain.flavor if zombie.brain %></td>
     <td><%= zombie.bio %></td>
     <td><%= zombie.age %></td>

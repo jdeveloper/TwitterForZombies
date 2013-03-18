@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314101644) do
+ActiveRecord::Schema.define(:version => 20130318111426) do
 
   create_table "brains", :force => true do |t|
     t.integer  "zombie_id"
@@ -47,11 +47,12 @@ ActiveRecord::Schema.define(:version => 20130314101644) do
   create_table "zombies", :force => true do |t|
     t.string   "name"
     t.text     "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "email"
     t.boolean  "rotting"
     t.integer  "age"
+    t.string   "decomposition"
   end
 
 end
