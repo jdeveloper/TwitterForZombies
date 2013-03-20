@@ -14,7 +14,7 @@ class Zombie < ActiveRecord::Base
   scope :recent, order("created_at desc").limit(3)
   
   def make_rotting
-    self.rotting = isOlderThen20?
+    self.rotting = isOlderThen20? if age
     true
   end
   
