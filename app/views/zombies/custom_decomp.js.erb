@@ -1,0 +1,5 @@
+$('span#decomposition').text("<%= escape_javascript(@zombie.decomposition) %>");
+
+<% if @zombie.decomposition == "Dead (again)" %>
+	$('div#custom_phase').fadeOut();
+<% end %>

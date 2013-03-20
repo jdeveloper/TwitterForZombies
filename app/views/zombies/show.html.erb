@@ -12,7 +12,7 @@
 
 <p>
   <b>Decomposition:</b>
-  <%= @zombie.decomposition %>
+  <span id="decomposition"><%= @zombie.decomposition %></span>
 </p>
 
 <p>
@@ -25,6 +25,13 @@
   <%= @zombie.age %>
 </p>
 
+<div id="custom_phase">
+	<%= form_for(@zombie, url: custom_decomp_zombie_path(@zombie), remote: true) do |f| %>
+		<strong>Custom phase:</strong>
+		<%= f.text_field :decomposition %>
+		<%= f.submit "Set"%>
+	<% end %>
+</p>
 
 <%= link_to 'Edit', edit_zombie_path(@zombie) %> |
 <%= link_to 'Back', zombies_path %>

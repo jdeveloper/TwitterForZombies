@@ -2,6 +2,7 @@ TweeterForZombies::Application.routes.draw do
   resources :zombies do
     resources :tweets
     get :decomp, on: :member
+    put :custom_decomp, on: :member
   end
 
 

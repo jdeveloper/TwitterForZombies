@@ -92,4 +92,10 @@ class ZombiesController < ApplicationController
       render json: @zombie.to_json(only: :decomposition)
     end
   end
+  
+  def custom_decomp
+    @zombie = Zombie.find(params[:id])
+    @zombie.decomposition = params[:zombie][:decomposition]
+    @zombie.save
+  end
 end
