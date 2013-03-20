@@ -6,3 +6,19 @@ $(document).ready ->
 		event.preventDefault()
 		$(this).hide()
 		$('#zombie_bio').show()
+		
+	$('div#custom_phase2 form').submit (event) ->
+		event.preventDefault()
+		
+		url = $(this).attr('action');
+		custom_decomp = $('div#custom_phase2 #zombie_decomposition').val()
+		
+		$.ajax
+			type: 'put'
+			url: url
+			data: { zombie: { decomposition: custom_decomp } }
+			dataType: 'json'
+			success: (json) ->
+				$('span#decomposition').text(json.decomposition)
+				$('div#custom_phase2').fadeOut() if json.decomposition == "Dead (again)"
+		

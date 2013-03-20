@@ -31,7 +31,16 @@
 		<%= f.text_field :decomposition %>
 		<%= f.submit "Set"%>
 	<% end %>
-</p>
+</div>
+
+<div id="custom_phase2">
+	<%= form_for(@zombie, url: custom_decomp_zombie_path(@zombie)) do |f| %>
+		<strong>Custom phase:</strong>
+		<%= f.text_field :decomposition %>
+		<%= f.submit "Set"%>
+	<% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_zombie_path(@zombie) %> |
 <%= link_to 'Back', zombies_path %>

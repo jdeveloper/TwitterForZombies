@@ -97,5 +97,10 @@ class ZombiesController < ApplicationController
     @zombie = Zombie.find(params[:id])
     @zombie.decomposition = params[:zombie][:decomposition]
     @zombie.save
+    
+    respond_to do |format|
+      format.js
+      format.json { render json: @zombie.to_json(only: :decomposition) }
+    end
   end
 end
