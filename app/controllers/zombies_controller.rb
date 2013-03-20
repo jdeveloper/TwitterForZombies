@@ -3,6 +3,7 @@ class ZombiesController < ApplicationController
   # GET /zombies.json
   def index
     @zombies = Zombie.includes(:brain).rotting
+    @new_zombie = Zombie.new
     
     respond_to do |format|
       format.html # index.html.erb
@@ -50,6 +51,7 @@ class ZombiesController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @zombie.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
