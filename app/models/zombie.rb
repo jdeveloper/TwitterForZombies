@@ -24,6 +24,10 @@ class Zombie < ActiveRecord::Base
     age > 20
   end
   
+  def avatar_url
+    "http://zombietar.com/#{id}.jpg"
+  end
+  
   private
   def decomp_change_modification
     ZombieMailer.decomp_change(self).deliver

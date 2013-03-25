@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  bio: MyText
-  age: 1
+ash:
+  id: 1
+  name: Ash
+  graveyard: Oak Park
 
-two:
-  name: MyString
-  bio: MyText
-  age: 1
+tim:
+  id: 2
+  name: Tim
+  graveyard: Green Meadows
