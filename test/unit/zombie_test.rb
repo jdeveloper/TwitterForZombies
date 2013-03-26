@@ -1,13 +1,14 @@
 require 'test_helper'
+require 'shoulda'
 
 class ZombieTest < ActiveSupport::TestCase
   def setup
     @zombie = zombies(:ash)
   end
   
-  def assert_presence(model, field)
-    assert_match /can't be blank/, model.errors[field].join, "Presence error for   #{field} not found on #{model.class}"
-  end
+  should validate_presence_of(:name)
+  should validate_presence_of(:graveyard)
+  should have_many(:tweets)
   
   test "invalid without a name" do
     @zombie = Zombie.new
@@ -18,30 +19,8 @@ class ZombieTest < ActiveSupport::TestCase
     assert @zombie.valid?, "Zombie was not valid"
   end
   
-  test "invalid name gives error message" do
-    @zombie.name = nil
-    @zombie.valid?
-    
-    assert_presence @zombie, :name
-  end
-  
-  test "invalid graveyard gives error message" do
-    @zombie.graveyard = nil
-    @zombie.valid?
-    
-    assert_presence @zombie, :graveyard
-  end
-  
   test "can generate avatar_url" do
    assert_equal "http://zombietar.com/#{@zombie.id}.jpg", @zombie.avatar_url
-  end
-  
-  test "should responde to tweets" do
-    assert_respond_to @zombie, :tweets
-  end
-  
-  test "should contain tweets" do
-    assert_equal [tweets(:ash_2), tweets(:ash_1)], @zombie.tweets
   end
   
   test "should contain only tweets that belong to @zombie" do
