@@ -5,6 +5,10 @@ class ZombieTest < ActiveSupport::TestCase
     @zombie = zombies(:ash)
   end
   
+  def assert_presence(model, field)
+    assert_match /can't be blank/, model.errors[field].join, "Presence error for   #{field} not found on #{model.class}"
+  end
+  
   test "invalid without a name" do
     @zombie = Zombie.new
     assert !@zombie.valid?, "Name is not being validated"
@@ -18,14 +22,14 @@ class ZombieTest < ActiveSupport::TestCase
     @zombie.name = nil
     @zombie.valid?
     
-    assert_match /can't be blank/, @zombie.errors[:name].join
+    assert_presence @zombie, :name
   end
   
   test "invalid graveyard gives error message" do
     @zombie.graveyard = nil
     @zombie.valid?
     
-    assert_match /can't be blank/, @zombie.errors[:graveyard].join
+    assert_presence @zombie, :graveyard
   end
   
   test "can generate avatar_url" do
