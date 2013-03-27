@@ -4,6 +4,7 @@ class Zombie < ActiveRecord::Base
   validates_presence_of :name, :graveyard
   
   has_one :brain, dependent: :destroy
+  has_one :weapon
   has_many :tweets
   has_many :role_assignments
   has_many :roles, through: :role_assignments
@@ -26,6 +27,15 @@ class Zombie < ActiveRecord::Base
   
   def avatar_url
     "http://zombietar.com/#{id}.jpg"
+  end
+  
+  def decapitate
+    weapon.slice
+    brain.status = "dead again"
+  end
+  
+  def status
+    brain.status
   end
   
   private

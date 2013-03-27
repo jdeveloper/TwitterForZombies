@@ -28,4 +28,15 @@ class ZombieTest < ActiveSupport::TestCase
       tweet.zombie == @zombie
     end
   end
+  
+  test "decapitate should turn status to dead again" do
+    @zombie.weapon.stubs(:slice)
+    @zombie.decapitate
+    assert_equal "dead again", @zombie.status
+  end
+  
+  test "decapitate should call slice" do
+    @zombie.weapon.expects(:slice)
+    @zombie.decapitate
+  end
 end
