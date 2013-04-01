@@ -23,6 +23,7 @@ end
 group :test do
   gem 'shoulda'
   gem 'mocha'
+  gem 'capybara'
 end
 
 gem 'jquery-rails'

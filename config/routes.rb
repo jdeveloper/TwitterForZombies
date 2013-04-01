@@ -1,4 +1,5 @@
 TweeterForZombies::Application.routes.draw do
+  root :to => "zombies#index"
   resources :zombies do
     resources :tweets
     get :decomp, on: :member
