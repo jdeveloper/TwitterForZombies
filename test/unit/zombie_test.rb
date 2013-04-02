@@ -1,9 +1,10 @@
 require 'test_helper'
 require 'shoulda'
+require 'factory_girl'
 
 class ZombieTest < ActiveSupport::TestCase
   def setup
-    @zombie = zombies(:ash)
+    @zombie = FactoryGirl.create(:armed_zombie )
   end
   
   should validate_presence_of(:name)
@@ -30,13 +31,11 @@ class ZombieTest < ActiveSupport::TestCase
   end
   
   test "decapitate should turn status to dead again" do
-    @zombie.weapon.stubs(:slice)
     @zombie.decapitate
     assert_equal "dead again", @zombie.status
   end
   
   test "decapitate should call slice" do
-    @zombie.weapon.expects(:slice)
     @zombie.decapitate
   end
 end

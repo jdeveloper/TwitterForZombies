@@ -26,6 +26,10 @@ group :test do
   gem 'capybara'
 end
 
+group :development, :test do
+  gem 'factory_girl_rails'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
