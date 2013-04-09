@@ -20,4 +20,9 @@ describe Zombie do
     
     zombie.should have(2).weapons
   end
+  
+  it "changes the number of zombies" do
+    zombie = Zombie.new(name: "Ash", graveyard: "Trotelling")
+    expect {zombie.save}.to change {Zombie.count}.by(1)
+  end
 end
