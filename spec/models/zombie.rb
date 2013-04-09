@@ -25,4 +25,10 @@ describe Zombie do
     zombie = Zombie.new(name: "Ash", graveyard: "Trotelling")
     expect {zombie.save}.to change {Zombie.count}.by(1)
   end
+  
+  it "raises an error if saved without name and graveyard" do
+    zombie = Zombie.new
+    
+    expect {zombie.save!}.to raise_error(ActiveRecord::RecordInvalid)
+  end
 end
