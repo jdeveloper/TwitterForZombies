@@ -1,5 +1,5 @@
 class Zombie < ActiveRecord::Base
-  attr_accessible :age, :bio, :name, :email, :decomposition
+  attr_accessible :age, :bio, :name, :email, :decomposition, :tweets
   
   validates_presence_of :name, :graveyard
   
