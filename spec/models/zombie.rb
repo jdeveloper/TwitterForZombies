@@ -14,4 +14,10 @@ describe Zombie do
     zombie.tweets.should include(tweet1)
     zombie.tweets.should include(tweet2)
   end
+  
+  it "starts with two weapons" do
+    zombie = Zombie.new(name: "Ash")
+    
+    zombie.should have(2).weapons
+  end
 end

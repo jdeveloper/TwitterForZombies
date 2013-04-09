@@ -4,7 +4,7 @@ class Zombie < ActiveRecord::Base
   validates_presence_of :name, :graveyard
   
   has_one :brain, dependent: :destroy
-  has_one :weapon
+  has_many :weapons
   has_many :tweets
   has_many :role_assignments
   has_many :roles, through: :role_assignments
@@ -15,6 +15,13 @@ class Zombie < ActiveRecord::Base
   scope :rotting, where(rotting: true)
   scope :fresh, where("age < 20")
   scope :recent, order("created_at desc").limit(3)
+  
+  def initialize(attributes = nil)
+    super(attributes)
+    
+    weapons << Weapon.new
+    weapons << Weapon.new
+  end
   
   def make_rotting
     self.rotting = isOlderThen20? if age
